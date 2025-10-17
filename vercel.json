@@ -1,0 +1,6 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "rootDirectory": "shine-and-protect-full",
+  "buildCommand": "npm run build",
+  "outputDirectory": ".vercel/output"
+}
