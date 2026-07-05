@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://shine-and-protect.com/sitemap.xml
