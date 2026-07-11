@@ -13,6 +13,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initHeroSlideshow();
     initSectionSlideshows();
     initServiceTabs(); // Added service tabs functionality
+    initGalleryLightbox();
 });
 
 // ===== HERO SLIDESHOW =====
@@ -357,15 +358,97 @@ function showFormError(message) {
     }, 8000);
 }
 
-// ===== GALLERY LIGHTBOX (Simple Implementation) =====
-function initGallery() {
-    const galleryItems = document.querySelectorAll('.gallery-item');
-    
-    galleryItems.forEach(item => {
-        item.addEventListener('click', function() {
-            // This can be expanded with a proper lightbox library
-            console.log('Gallery item clicked');
+// ===== GALLERY LIGHTBOX =====
+function initGalleryLightbox() {
+    const galleryImages = Array.from(document.querySelectorAll('.gallery-item img'));
+    const lightbox = document.getElementById('galleryLightbox');
+    const lightboxImage = document.getElementById('galleryLightboxImage');
+    const lightboxCaption = document.getElementById('galleryLightboxCaption');
+    const closeBtn = document.getElementById('galleryLightboxClose');
+    const prevBtn = document.getElementById('galleryLightboxPrev');
+    const nextBtn = document.getElementById('galleryLightboxNext');
+    const backdrop = lightbox ? lightbox.querySelector('.gallery-lightbox-backdrop') : null;
+
+    if (!lightbox || galleryImages.length === 0 || !lightboxImage) return;
+
+    let currentIndex = 0;
+
+    function showImage(index) {
+        const image = galleryImages[index];
+        if (!image) return;
+
+        currentIndex = index;
+        lightboxImage.src = image.src;
+        lightboxImage.alt = image.alt;
+        lightboxCaption.textContent = image.alt;
+    }
+
+    function openLightbox(index) {
+        showImage(index);
+        lightbox.classList.add('is-open');
+        lightbox.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+        closeBtn.focus();
+    }
+
+    function closeLightbox() {
+        lightbox.classList.remove('is-open');
+        lightbox.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+        lightboxImage.removeAttribute('src');
+    }
+
+    function showPrevious() {
+        const nextIndex = (currentIndex - 1 + galleryImages.length) % galleryImages.length;
+        showImage(nextIndex);
+    }
+
+    function showNext() {
+        const nextIndex = (currentIndex + 1) % galleryImages.length;
+        showImage(nextIndex);
+    }
+
+    galleryImages.forEach((image, index) => {
+        image.closest('.gallery-item').addEventListener('click', function() {
+            openLightbox(index);
         });
+    });
+
+    closeBtn.addEventListener('click', closeLightbox);
+    prevBtn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        showPrevious();
+    });
+    nextBtn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        showNext();
+    });
+
+    backdrop.addEventListener('click', closeLightbox);
+
+    lightbox.addEventListener('click', function(e) {
+        const interactive = e.target.closest(
+            '.gallery-lightbox-image, .gallery-lightbox-nav, .gallery-lightbox-close, .gallery-lightbox-caption'
+        );
+        if (!interactive) {
+            closeLightbox();
+        }
+    });
+
+    lightboxImage.addEventListener('click', function(e) {
+        e.stopPropagation();
+    });
+
+    document.addEventListener('keydown', function(e) {
+        if (!lightbox.classList.contains('is-open')) return;
+
+        if (e.key === 'Escape') {
+            closeLightbox();
+        } else if (e.key === 'ArrowLeft') {
+            showPrevious();
+        } else if (e.key === 'ArrowRight') {
+            showNext();
+        }
     });
 }
 
@@ -496,7 +579,6 @@ function animateCounter(element, target) {
 
 // Initialize optional features
 window.addEventListener('load', () => {
-    initGallery();
     initLazyLoading();
     // initParallax(); // Uncomment if you want parallax effect
     initCounters();
