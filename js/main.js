@@ -14,6 +14,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initSectionSlideshows();
     initServiceTabs(); // Added service tabs functionality
     initGalleryLightbox();
+    initKnowledgeCenter();
 });
 
 // ===== HERO SLIDESHOW =====
@@ -450,6 +451,85 @@ function initGalleryLightbox() {
             showNext();
         }
     });
+}
+
+// ===== KNOWLEDGE CENTER =====
+function initKnowledgeCenter() {
+    initArticleFaq();
+    initArticleToc();
+}
+
+function initArticleFaq() {
+    const faqItems = document.querySelectorAll('.kc-faq-item');
+
+    faqItems.forEach(item => {
+        const question = item.querySelector('.kc-faq-question');
+        if (!question) return;
+
+        question.addEventListener('click', function() {
+            const isOpen = item.classList.contains('is-open');
+
+            faqItems.forEach(other => {
+                other.classList.remove('is-open');
+                const otherQuestion = other.querySelector('.kc-faq-question');
+                if (otherQuestion) {
+                    otherQuestion.setAttribute('aria-expanded', 'false');
+                }
+            });
+
+            if (!isOpen) {
+                item.classList.add('is-open');
+                question.setAttribute('aria-expanded', 'true');
+            }
+        });
+    });
+}
+
+function initArticleToc() {
+    const toc = document.getElementById('articleToc');
+    const content = document.getElementById('articleContent');
+
+    if (!toc || !content) return;
+
+    const tocLinks = toc.querySelectorAll('a[href^="#"]');
+    const sections = Array.from(tocLinks)
+        .map(link => document.querySelector(link.getAttribute('href')))
+        .filter(Boolean);
+
+    tocLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            const target = document.querySelector(this.getAttribute('href'));
+            if (!target) return;
+
+            e.preventDefault();
+            const navbar = document.getElementById('navbar');
+            const offset = navbar ? navbar.offsetHeight + 24 : 24;
+            const top = target.getBoundingClientRect().top + window.scrollY - offset;
+
+            window.scrollTo({ top, behavior: 'smooth' });
+        });
+    });
+
+    if (sections.length === 0) return;
+
+    const updateActiveLink = () => {
+        const navbar = document.getElementById('navbar');
+        const offset = navbar ? navbar.offsetHeight + 48 : 48;
+        let currentId = sections[0].id;
+
+        sections.forEach(section => {
+            if (section.getBoundingClientRect().top <= offset) {
+                currentId = section.id;
+            }
+        });
+
+        tocLinks.forEach(link => {
+            link.classList.toggle('active', link.getAttribute('href') === `#${currentId}`);
+        });
+    };
+
+    window.addEventListener('scroll', throttle(updateActiveLink, 100));
+    updateActiveLink();
 }
 
 // ===== UTILITIES =====
