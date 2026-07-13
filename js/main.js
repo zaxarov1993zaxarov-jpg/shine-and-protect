@@ -457,6 +457,87 @@ function initGalleryLightbox() {
 function initKnowledgeCenter() {
     initArticleFaq();
     initArticleToc();
+    initKnowledgeCenterLayout();
+    initKnowledgeCenterSearch();
+}
+
+function initKnowledgeCenterLayout() {
+    const page = document.querySelector('.kc-page');
+    const navbar = document.getElementById('navbar');
+    if (!page || !navbar) return;
+
+    const updateOffset = () => {
+        const height = Math.ceil(navbar.getBoundingClientRect().height);
+        page.style.setProperty('--kc-nav-offset', `${height}px`);
+    };
+
+    updateOffset();
+    window.addEventListener('resize', throttle(updateOffset, 100));
+}
+
+function initKnowledgeCenterSearch() {
+    const searchInput = document.getElementById('kcSearchInput');
+    const searchForm = document.getElementById('kcSearchForm');
+    const articles = document.querySelectorAll('#kcArticlesList .kc-featured-card');
+    const emptyState = document.getElementById('kcArticlesEmpty');
+    const categoryCards = document.querySelectorAll('.kc-category-card[data-category]');
+
+    if (!searchInput || articles.length === 0) return;
+
+    let activeCategory = '';
+
+    const applyFilters = () => {
+        const query = searchInput.value.trim().toLowerCase();
+        let visibleCount = 0;
+
+        articles.forEach(article => {
+            const title = (article.dataset.title || '').toLowerCase();
+            const category = (article.dataset.category || '').toLowerCase();
+            const excerpt = (article.dataset.excerpt || '').toLowerCase();
+            const matchesQuery = !query || title.includes(query) || category.includes(query) || excerpt.includes(query);
+            const matchesCategory = !activeCategory || category === activeCategory.toLowerCase();
+            const isVisible = matchesQuery && matchesCategory;
+
+            article.classList.toggle('is-hidden', !isVisible);
+            if (isVisible) visibleCount += 1;
+        });
+
+        if (emptyState) {
+            emptyState.hidden = visibleCount > 0;
+        }
+    };
+
+    searchInput.addEventListener('input', applyFilters);
+
+    if (searchForm) {
+        searchForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            applyFilters();
+        });
+    }
+
+    categoryCards.forEach(card => {
+        card.addEventListener('click', function() {
+            const category = this.dataset.category || '';
+            const isSame = activeCategory === category;
+
+            activeCategory = isSame ? '' : category;
+
+            categoryCards.forEach(other => {
+                other.classList.toggle('is-active', other === this && !isSame);
+            });
+
+            applyFilters();
+
+            const articlesSection = document.getElementById('latest-articles');
+            if (articlesSection) {
+                const navbar = document.getElementById('navbar');
+                const offset = navbar ? navbar.offsetHeight + 16 : 16;
+                const top = articlesSection.getBoundingClientRect().top + window.scrollY - offset;
+                window.scrollTo({ top, behavior: 'smooth' });
+            }
+        });
+    });
 }
 
 function initArticleFaq() {
