@@ -87,14 +87,14 @@ function initNavigation() {
     const menuOverlay = document.getElementById('menuOverlay');
     const navLinks = document.querySelectorAll('.nav-link');
     
-    // Navbar scroll effect
-    window.addEventListener('scroll', function() {
-        if (window.scrollY > 50) {
-            navbar.classList.add('scrolled');
-        } else {
-            navbar.classList.remove('scrolled');
-        }
-    });
+    // Navbar sticky scroll effect
+    const updateNavbarScrollState = () => {
+        if (!navbar) return;
+        navbar.classList.toggle('scrolled', window.scrollY > 20);
+    };
+
+    updateNavbarScrollState();
+    window.addEventListener('scroll', updateNavbarScrollState, { passive: true });
     
     // Mobile menu toggle
     if (mobileMenuToggle) {
