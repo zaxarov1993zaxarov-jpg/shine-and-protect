@@ -14,6 +14,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initSectionSlideshows();
     initServiceTabs(); // Added service tabs functionality
     initGalleryLightbox();
+    initPortfolioLightbox();
     initKnowledgeCenter();
 });
 
@@ -434,6 +435,111 @@ function initGalleryLightbox() {
         if (!interactive) {
             closeLightbox();
         }
+    });
+
+    lightboxImage.addEventListener('click', function(e) {
+        e.stopPropagation();
+    });
+
+    document.addEventListener('keydown', function(e) {
+        if (!lightbox.classList.contains('is-open')) return;
+
+        if (e.key === 'Escape') {
+            closeLightbox();
+        } else if (e.key === 'ArrowLeft') {
+            showPrevious();
+        } else if (e.key === 'ArrowRight') {
+            showNext();
+        }
+    });
+}
+
+function initPortfolioLightbox() {
+    const triggers = Array.from(document.querySelectorAll('[data-portfolio-index]'));
+    const images = Array.from(document.querySelectorAll('.portfolio-lightbox-source'));
+    const lightbox = document.getElementById('portfolioLightbox');
+    const lightboxImage = document.getElementById('portfolioLightboxImage');
+    const lightboxCaption = document.getElementById('portfolioLightboxCaption');
+    const closeBtn = document.getElementById('portfolioLightboxClose');
+    const prevBtn = document.getElementById('portfolioLightboxPrev');
+    const nextBtn = document.getElementById('portfolioLightboxNext');
+    const backdrop = lightbox ? lightbox.querySelector('.gallery-lightbox-backdrop') : null;
+
+    if (!lightbox || images.length === 0 || !lightboxImage) return;
+
+    // Preload all project images for smooth lightbox browsing
+    const preloaded = images.map(image => {
+        const preload = new Image();
+        preload.decoding = 'async';
+        preload.src = image.currentSrc || image.src;
+        return preload;
+    });
+
+    let currentIndex = 0;
+
+    function showImage(index) {
+        const image = images[index];
+        if (!image) return;
+
+        currentIndex = index;
+        const src = preloaded[index]?.src || image.currentSrc || image.src;
+        lightboxImage.src = src;
+        lightboxImage.alt = image.alt;
+        if (lightboxCaption) {
+            lightboxCaption.textContent = image.alt;
+        }
+    }
+
+    function openLightbox(index) {
+        showImage(index);
+        lightbox.classList.add('is-open');
+        lightbox.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+        if (closeBtn) closeBtn.focus();
+    }
+
+    function closeLightbox() {
+        lightbox.classList.remove('is-open');
+        lightbox.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+        lightboxImage.removeAttribute('src');
+    }
+
+    function showPrevious() {
+        showImage((currentIndex - 1 + images.length) % images.length);
+    }
+
+    function showNext() {
+        showImage((currentIndex + 1) % images.length);
+    }
+
+    triggers.forEach(trigger => {
+        trigger.addEventListener('click', function() {
+            const index = parseInt(this.getAttribute('data-portfolio-index'), 10);
+            openLightbox(Number.isNaN(index) ? 0 : index);
+        });
+    });
+
+    if (closeBtn) closeBtn.addEventListener('click', closeLightbox);
+    if (prevBtn) {
+        prevBtn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            showPrevious();
+        });
+    }
+    if (nextBtn) {
+        nextBtn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            showNext();
+        });
+    }
+    if (backdrop) backdrop.addEventListener('click', closeLightbox);
+
+    lightbox.addEventListener('click', function(e) {
+        const interactive = e.target.closest(
+            '.gallery-lightbox-image, .gallery-lightbox-nav, .gallery-lightbox-close, .gallery-lightbox-caption'
+        );
+        if (!interactive) closeLightbox();
     });
 
     lightboxImage.addEventListener('click', function(e) {
