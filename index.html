@@ -48,7 +48,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
 
     <!-- Main Stylesheet -->
-    <link rel="stylesheet" href="css/style.css?v=20260713-5">
+    <link rel="stylesheet" href="css/style.css?v=20260714-1">
     <link rel="preload" as="image" href="images/portfolio/mercedes-amg-gle-53/mercedes-gle53-3.jpeg">
 
     <!-- Google Analytics (Replace G-XXXXXXXXXX with your actual tracking ID) -->
@@ -859,17 +859,17 @@
                 <h2 class="section-title">Featured Project</h2>
             </div>
 
-            <article class="portfolio-showcase" data-aos="fade-up">
-                <header class="portfolio-showcase-intro">
-                    <h3 class="portfolio-showcase-title">Mercedes-AMG GLE 53 Coupe</h3>
-                    <p class="portfolio-showcase-subtitle">Full Body Stealth Paint Protection Film</p>
-                </header>
-
-                <button type="button" class="portfolio-showcase-hero" data-portfolio-index="0" aria-label="View Mercedes-AMG GLE 53 Coupe hero photo fullscreen">
+            <article class="portfolio-showcase" data-aos="fade-up" id="portfolioShowcase">
+                <button
+                    type="button"
+                    class="portfolio-showcase-hero"
+                    id="portfolioHeroTrigger"
+                    aria-label="View featured project photo fullscreen"
+                >
                     <img
+                        id="portfolioHeroImage"
                         src="images/portfolio/mercedes-amg-gle-53/mercedes-gle53-3.jpeg"
                         alt="Mercedes-AMG GLE 53 Coupe with full-body Stealth Paint Protection Film"
-                        class="portfolio-lightbox-source"
                         loading="eager"
                         decoding="async"
                         fetchpriority="high"
@@ -877,6 +877,11 @@
                 </button>
 
                 <div class="portfolio-showcase-body">
+                    <header class="portfolio-showcase-intro">
+                        <h3 class="portfolio-showcase-title">Mercedes-AMG GLE 53 Coupe</h3>
+                        <p class="portfolio-showcase-subtitle">Full Body Stealth Paint Protection Film</p>
+                    </header>
+
                     <div class="portfolio-showcase-description">
                         <p class="portfolio-showcase-lead">Elegance deserves lasting protection.</p>
                         <p>This Mercedes-AMG GLE 53 Coupe received a full-body Stealth Paint Protection Film installation, transforming its factory finish into a refined satin appearance while protecting every painted surface and select gloss black trim from rock chips, road debris, scratches, and everyday wear.</p>
@@ -890,21 +895,24 @@
                     </a>
                 </div>
 
-                <div class="portfolio-showcase-gallery" id="portfolioGallery">
-                    <button type="button" class="portfolio-gallery-item" data-portfolio-index="1" aria-label="Open project photo 1">
-                        <img src="images/portfolio/mercedes-amg-gle-53/mercedes-gle53-1.jpeg" alt="Mercedes-AMG GLE 53 Coupe Stealth PPF front and side view" class="portfolio-lightbox-source" loading="lazy" decoding="async">
+                <div class="portfolio-showcase-gallery" id="portfolioGallery" role="listbox" aria-label="Project photo gallery">
+                    <button type="button" class="portfolio-gallery-item" role="option" data-portfolio-index="0" aria-label="Show project photo 1" aria-selected="false">
+                        <img src="images/portfolio/mercedes-amg-gle-53/mercedes-gle53-1.jpeg" alt="Mercedes-AMG GLE 53 Coupe Stealth PPF front and side view" loading="lazy" decoding="async">
                     </button>
-                    <button type="button" class="portfolio-gallery-item" data-portfolio-index="2" aria-label="Open project photo 2">
-                        <img src="images/portfolio/mercedes-amg-gle-53/mercedes-gle53-2.jpeg" alt="Mercedes-AMG GLE 53 Coupe Stealth PPF detail view" class="portfolio-lightbox-source" loading="lazy" decoding="async">
+                    <button type="button" class="portfolio-gallery-item" role="option" data-portfolio-index="1" aria-label="Show project photo 2" aria-selected="false">
+                        <img src="images/portfolio/mercedes-amg-gle-53/mercedes-gle53-2.jpeg" alt="Mercedes-AMG GLE 53 Coupe Stealth PPF detail view" loading="lazy" decoding="async">
                     </button>
-                    <button type="button" class="portfolio-gallery-item" data-portfolio-index="3" aria-label="Open project photo 3">
-                        <img src="images/portfolio/mercedes-amg-gle-53/mercedes-gle53-4.jpeg" alt="Mercedes-AMG GLE 53 Coupe Stealth PPF rear three-quarter view" class="portfolio-lightbox-source" loading="lazy" decoding="async">
+                    <button type="button" class="portfolio-gallery-item is-active" role="option" data-portfolio-index="2" aria-label="Show project photo 3" aria-selected="true">
+                        <img src="images/portfolio/mercedes-amg-gle-53/mercedes-gle53-3.jpeg" alt="Mercedes-AMG GLE 53 Coupe with full-body Stealth Paint Protection Film" loading="lazy" decoding="async">
                     </button>
-                    <button type="button" class="portfolio-gallery-item" data-portfolio-index="4" aria-label="Open project photo 4">
-                        <img src="images/portfolio/mercedes-amg-gle-53/mercedes-gle53-5.jpeg" alt="Mercedes-AMG GLE 53 Coupe Stealth PPF side profile" class="portfolio-lightbox-source" loading="lazy" decoding="async">
+                    <button type="button" class="portfolio-gallery-item" role="option" data-portfolio-index="3" aria-label="Show project photo 4" aria-selected="false">
+                        <img src="images/portfolio/mercedes-amg-gle-53/mercedes-gle53-4.jpeg" alt="Mercedes-AMG GLE 53 Coupe Stealth PPF rear three-quarter view" loading="lazy" decoding="async">
                     </button>
-                    <button type="button" class="portfolio-gallery-item" data-portfolio-index="5" aria-label="Open project photo 5">
-                        <img src="images/portfolio/mercedes-amg-gle-53/mercedes-gle53-6.jpeg" alt="Mercedes-AMG GLE 53 Coupe Stealth PPF finish detail" class="portfolio-lightbox-source" loading="lazy" decoding="async">
+                    <button type="button" class="portfolio-gallery-item" role="option" data-portfolio-index="4" aria-label="Show project photo 5" aria-selected="false">
+                        <img src="images/portfolio/mercedes-amg-gle-53/mercedes-gle53-5.jpeg" alt="Mercedes-AMG GLE 53 Coupe Stealth PPF side profile" loading="lazy" decoding="async">
+                    </button>
+                    <button type="button" class="portfolio-gallery-item" role="option" data-portfolio-index="5" aria-label="Show project photo 6" aria-selected="false">
+                        <img src="images/portfolio/mercedes-amg-gle-53/mercedes-gle53-6.jpeg" alt="Mercedes-AMG GLE 53 Coupe Stealth PPF finish detail" loading="lazy" decoding="async">
                     </button>
                 </div>
             </article>
@@ -1263,7 +1271,7 @@
     </script>
 
     <!-- Main JavaScript -->
-    <script src="js/main.js?v=20260713-6"></script>
+    <script src="js/main.js?v=20260714-1"></script>
     <script defer src="https://static.cloudflareinsights.com/beacon.min.js/v4513226cdae34746b4dedf0b4dfa099e1781791509496" integrity="sha512-ZE9pZaUXND66v380QUtch5sE9tPFh2zg45pR2PB0CVkCtOREv2AJKkSidISWkysEuQ0EH8faUU5du78bx87UQ==" data-cf-beacon='{"version":"2024.11.0","token":"c177dee1b4c04b51bc1ca0f6d5940738","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
 </body>
 </html>

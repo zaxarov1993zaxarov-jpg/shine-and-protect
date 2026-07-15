@@ -1643,41 +1643,23 @@ section {
     gap: var(--spacing-2xl);
 }
 
-.portfolio-showcase-intro {
-    text-align: center;
-    max-width: 900px;
-}
-
-.portfolio-showcase-title {
-    font-family: var(--font-heading);
-    font-size: clamp(2.2rem, 5vw, 3.75rem);
-    letter-spacing: 2px;
-    line-height: 1.1;
-    color: var(--text-primary);
-    margin-bottom: var(--spacing-sm);
-}
-
-.portfolio-showcase-subtitle {
-    font-size: clamp(1rem, 2vw, 1.25rem);
-    font-weight: 500;
-    letter-spacing: 0.5px;
-    color: var(--primary-color);
-    margin: 0;
-}
-
 .portfolio-showcase-hero {
     display: block;
     width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
     padding: 0;
     border: none;
-    background: transparent;
-    cursor: pointer;
-    border-radius: var(--radius-lg);
+    background: var(--dark-elevated);
+    cursor: zoom-in;
+    border-radius: 18px;
     overflow: hidden;
     font: inherit;
     color: inherit;
-    box-shadow: var(--shadow-xl), 0 0 40px rgba(212, 175, 55, 0.08);
-    transition: transform var(--transition-base), box-shadow var(--transition-base);
+    box-shadow:
+        0 16px 48px rgba(0, 0, 0, 0.45),
+        0 0 32px rgba(212, 175, 55, 0.08);
+    transition: box-shadow 0.3s ease;
 }
 
 .portfolio-showcase-hero:focus-visible,
@@ -1690,59 +1672,92 @@ section {
     display: block;
     width: 100%;
     height: auto;
-    max-height: min(72vh, 760px);
+    aspect-ratio: 16 / 9;
+    max-height: min(68vh, 720px);
     object-fit: cover;
-    aspect-ratio: 21 / 10;
-    transition: transform var(--transition-slow);
+    opacity: 1;
+    transition: opacity 0.3s ease, transform 0.5s ease;
+}
+
+.portfolio-showcase-hero img.is-fading {
+    opacity: 0;
 }
 
 .portfolio-showcase-hero:hover {
-    box-shadow: var(--shadow-xl), 0 0 48px rgba(212, 175, 55, 0.16);
+    box-shadow:
+        0 20px 56px rgba(0, 0, 0, 0.5),
+        0 0 40px rgba(212, 175, 55, 0.14);
 }
 
 .portfolio-showcase-hero:hover img {
-    transform: scale(1.03);
+    transform: scale(1.02);
 }
 
 .portfolio-showcase-body {
     width: 100%;
-    max-width: 760px;
+    max-width: 650px;
     text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: var(--spacing-xl);
+    gap: var(--spacing-lg);
+}
+
+.portfolio-showcase-intro {
+    text-align: center;
+    width: 100%;
+}
+
+.portfolio-showcase-title {
+    font-family: var(--font-heading);
+    font-size: clamp(2rem, 4.5vw, 3.25rem);
+    letter-spacing: 2px;
+    line-height: 1.12;
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-sm);
+}
+
+.portfolio-showcase-subtitle {
+    font-size: clamp(0.95rem, 1.8vw, 1.15rem);
+    font-weight: 600;
+    letter-spacing: 0.6px;
+    color: var(--primary-color);
+    margin: 0;
 }
 
 .portfolio-showcase-description {
     display: flex;
     flex-direction: column;
-    gap: var(--spacing-md);
+    gap: 1.25rem;
+    width: 100%;
 }
 
 .portfolio-showcase-description p {
     color: var(--text-secondary);
-    line-height: 1.85;
+    line-height: 1.9;
     font-size: 1.05rem;
+    font-weight: 400;
     margin: 0;
 }
 
 .portfolio-showcase-lead {
-    font-size: 1.25rem !important;
-    font-weight: 500;
+    font-size: 1.2rem !important;
+    font-weight: 500 !important;
     color: var(--text-primary) !important;
     letter-spacing: 0.2px;
 }
 
 .portfolio-showcase-cta {
     min-width: 220px;
+    margin-top: var(--spacing-xs);
 }
 
 .portfolio-showcase-gallery {
     width: 100%;
+    max-width: 1100px;
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: var(--spacing-md);
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: var(--spacing-sm);
 }
 
 .portfolio-gallery-item {
@@ -1750,16 +1765,19 @@ section {
     display: block;
     width: 100%;
     padding: 0;
-    border: 1px solid var(--dark-border);
-    border-radius: var(--radius-md);
+    border: 2px solid transparent;
+    border-radius: 12px;
     overflow: hidden;
     background: var(--dark-elevated);
     cursor: pointer;
-    aspect-ratio: 16 / 10;
+    aspect-ratio: 4 / 3;
     font: inherit;
     color: inherit;
-    box-shadow: var(--shadow-md);
-    transition: border-color var(--transition-base), box-shadow var(--transition-base), transform var(--transition-base);
+    box-shadow: var(--shadow-sm);
+    transition:
+        border-color 0.3s ease,
+        box-shadow 0.3s ease,
+        transform 0.3s ease;
 }
 
 .portfolio-gallery-item img {
@@ -1767,20 +1785,35 @@ section {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform var(--transition-slow);
+    transition: transform 0.35s ease;
 }
 
 .portfolio-gallery-item:hover {
-    border-color: rgba(212, 175, 55, 0.45);
-    box-shadow: var(--shadow-lg), 0 0 24px rgba(212, 175, 55, 0.12);
-    transform: translateY(-2px);
+    transform: scale(1.04);
+    box-shadow: var(--shadow-md);
 }
 
 .portfolio-gallery-item:hover img {
     transform: scale(1.06);
 }
 
-@media (max-width: 768px) {
+.portfolio-gallery-item.is-active {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 1px rgba(212, 175, 55, 0.35), var(--shadow-md);
+}
+
+.portfolio-gallery-item.is-active:hover {
+    transform: none;
+}
+
+@media (max-width: 968px) {
+    .portfolio-showcase-gallery {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: var(--spacing-sm);
+    }
+}
+
+@media (max-width: 640px) {
     .portfolio-section {
         padding: var(--spacing-2xl) 0;
     }
@@ -1790,7 +1823,7 @@ section {
     }
 
     .portfolio-showcase-hero {
-        border-radius: var(--radius-md);
+        border-radius: 16px;
     }
 
     .portfolio-showcase-hero img {
@@ -1798,8 +1831,13 @@ section {
         max-height: none;
     }
 
-    .portfolio-showcase-description p {
-        font-size: 1rem;
+    .portfolio-showcase-body {
+        max-width: 100%;
+        gap: var(--spacing-md);
+    }
+
+    .portfolio-showcase-description {
+        gap: 1.1rem;
         text-align: left;
     }
 
@@ -1807,13 +1845,19 @@ section {
         text-align: center !important;
     }
 
+    .portfolio-showcase-description p {
+        font-size: 1rem;
+        line-height: 1.85;
+    }
+
     .portfolio-showcase-gallery {
-        grid-template-columns: 1fr;
-        gap: var(--spacing-sm);
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 0.65rem;
     }
 
     .portfolio-gallery-item {
-        aspect-ratio: 16 / 10;
+        border-radius: 10px;
+        aspect-ratio: 4 / 3;
     }
 }
 

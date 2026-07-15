@@ -455,8 +455,9 @@ function initGalleryLightbox() {
 }
 
 function initPortfolioLightbox() {
-    const triggers = Array.from(document.querySelectorAll('[data-portfolio-index]'));
-    const images = Array.from(document.querySelectorAll('.portfolio-lightbox-source'));
+    const heroTrigger = document.getElementById('portfolioHeroTrigger');
+    const heroImage = document.getElementById('portfolioHeroImage');
+    const thumbs = Array.from(document.querySelectorAll('.portfolio-gallery-item'));
     const lightbox = document.getElementById('portfolioLightbox');
     const lightboxImage = document.getElementById('portfolioLightboxImage');
     const lightboxCaption = document.getElementById('portfolioLightboxCaption');
@@ -465,33 +466,85 @@ function initPortfolioLightbox() {
     const nextBtn = document.getElementById('portfolioLightboxNext');
     const backdrop = lightbox ? lightbox.querySelector('.gallery-lightbox-backdrop') : null;
 
-    if (!lightbox || images.length === 0 || !lightboxImage) return;
+    if (!heroImage || !lightbox || !lightboxImage || thumbs.length === 0) return;
 
-    // Preload all project images for smooth lightbox browsing
-    const preloaded = images.map(image => {
-        const preload = new Image();
-        preload.decoding = 'async';
-        preload.src = image.currentSrc || image.src;
-        return preload;
+    const gallery = thumbs.map(thumb => {
+        const img = thumb.querySelector('img');
+        return {
+            src: img.currentSrc || img.src,
+            alt: img.alt || ''
+        };
     });
 
-    let currentIndex = 0;
+    gallery.forEach(item => {
+        const preload = new Image();
+        preload.decoding = 'async';
+        preload.src = item.src;
+    });
 
-    function showImage(index) {
-        const image = images[index];
-        if (!image) return;
+    let currentIndex = 2;
+    let isAnimating = false;
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    function setActiveThumb(index) {
+        thumbs.forEach((thumb, i) => {
+            const isActive = i === index;
+            thumb.classList.toggle('is-active', isActive);
+            thumb.setAttribute('aria-selected', isActive ? 'true' : 'false');
+        });
+    }
+
+    function updateHero(index, animate) {
+        const item = gallery[index];
+        if (!item) return;
+
+        const filename = item.src.split('/').pop();
+        if (index === currentIndex && heroImage.src.includes(filename)) {
+            setActiveThumb(index);
+            return;
+        }
+
+        const applyImage = () => {
+            heroImage.src = item.src;
+            heroImage.alt = item.alt;
+            currentIndex = index;
+            setActiveThumb(index);
+            heroImage.classList.remove('is-fading');
+            isAnimating = false;
+        };
+
+        if (!animate) {
+            applyImage();
+            return;
+        }
+
+        if (isAnimating) return;
+        isAnimating = true;
+        heroImage.classList.add('is-fading');
+
+        window.setTimeout(applyImage, 280);
+    }
+
+    function showLightboxImage(index) {
+        const item = gallery[index];
+        if (!item) return;
 
         currentIndex = index;
-        const src = preloaded[index]?.src || image.currentSrc || image.src;
-        lightboxImage.src = src;
-        lightboxImage.alt = image.alt;
-        if (lightboxCaption) {
-            lightboxCaption.textContent = image.alt;
+        lightboxImage.src = item.src;
+        lightboxImage.alt = item.alt;
+        if (lightboxCaption) lightboxCaption.textContent = item.alt;
+        setActiveThumb(index);
+
+        const filename = item.src.split('/').pop();
+        if (!heroImage.src.includes(filename)) {
+            heroImage.src = item.src;
+            heroImage.alt = item.alt;
         }
     }
 
     function openLightbox(index) {
-        showImage(index);
+        showLightboxImage(typeof index === 'number' ? index : currentIndex);
         lightbox.classList.add('is-open');
         lightbox.setAttribute('aria-hidden', 'false');
         document.body.style.overflow = 'hidden';
@@ -506,19 +559,36 @@ function initPortfolioLightbox() {
     }
 
     function showPrevious() {
-        showImage((currentIndex - 1 + images.length) % images.length);
+        const nextIndex = (currentIndex - 1 + gallery.length) % gallery.length;
+        if (lightbox.classList.contains('is-open')) {
+            showLightboxImage(nextIndex);
+        } else {
+            updateHero(nextIndex, true);
+        }
     }
 
     function showNext() {
-        showImage((currentIndex + 1) % images.length);
+        const nextIndex = (currentIndex + 1) % gallery.length;
+        if (lightbox.classList.contains('is-open')) {
+            showLightboxImage(nextIndex);
+        } else {
+            updateHero(nextIndex, true);
+        }
     }
 
-    triggers.forEach(trigger => {
-        trigger.addEventListener('click', function() {
+    thumbs.forEach(thumb => {
+        thumb.addEventListener('click', function() {
             const index = parseInt(this.getAttribute('data-portfolio-index'), 10);
-            openLightbox(Number.isNaN(index) ? 0 : index);
+            if (Number.isNaN(index)) return;
+            updateHero(index, true);
         });
     });
+
+    if (heroTrigger) {
+        heroTrigger.addEventListener('click', function() {
+            openLightbox(currentIndex);
+        });
+    }
 
     if (closeBtn) closeBtn.addEventListener('click', closeLightbox);
     if (prevBtn) {
@@ -546,6 +616,21 @@ function initPortfolioLightbox() {
         e.stopPropagation();
     });
 
+    lightboxImage.addEventListener('touchstart', function(e) {
+        touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+
+    lightboxImage.addEventListener('touchend', function(e) {
+        touchEndX = e.changedTouches[0].screenX;
+        const delta = touchEndX - touchStartX;
+        if (Math.abs(delta) < 40) return;
+        if (delta > 0) {
+            showPrevious();
+        } else {
+            showNext();
+        }
+    }, { passive: true });
+
     document.addEventListener('keydown', function(e) {
         if (!lightbox.classList.contains('is-open')) return;
 
@@ -557,6 +642,8 @@ function initPortfolioLightbox() {
             showNext();
         }
     });
+
+    setActiveThumb(currentIndex);
 }
 
 // ===== KNOWLEDGE CENTER =====
