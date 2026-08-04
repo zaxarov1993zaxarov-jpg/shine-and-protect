@@ -1,37 +1,945 @@
-<title>Service Areas | Paint Protection Film Near You | Shine & Protect</title>
-<meta name="description" content="Shine & Protect proudly serves Quakertown, Allentown, Bethlehem, Easton and surrounding Pennsylvania communities with professional Paint Protection Film installation.">
-<h1>Paint Protection Film Service Areas</h1>
-<p class="page-intro">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    Shine & Protect proudly serves drivers throughout the Lehigh Valley and Upper Bucks County with professional Paint Protection Film installation. Whether you own a daily driver, luxury vehicle or exotic car, we help protect your investment with premium self-healing PPF.
-    
-    </p>
-    <section class="locations-grid">
+    <title>PPF Service Areas in Bucks County & Lehigh Valley | Shine & Protect</title>
+    <meta name="description" content="Professional Paint Protection Film, ceramic coating, window tint and paint correction serving Quakertown, Allentown, Bethlehem, Easton, Bucks County, Montgomery County and the Lehigh Valley.">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="Shine & Protect">
 
-        <h2>Areas We Serve</h2>
-        
-        <div class="card-grid">
-        
-        <div class="card">
-        <h3><a href="paint-protection-film-allentown.html">Allentown</a></h3>
-        <p>Professional Paint Protection Film installation for drivers throughout Allentown and nearby communities.</p>
+    <link rel="canonical" href="https://shine-and-protect.com/locations.html">
+    <link rel="icon" type="image/png" href="images/favicon.png">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://shine-and-protect.com/locations.html">
+    <meta property="og:title" content="PPF Service Areas | Shine & Protect">
+    <meta property="og:description" content="Premium automotive protection services throughout Bucks County, Montgomery County and the Lehigh Valley.">
+    <meta property="og:image" content="https://shine-and-protect.com/images/full-vehicle.jpg">
+    <meta property="og:site_name" content="Shine & Protect">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="PPF Service Areas | Shine & Protect">
+    <meta name="twitter:description" content="Premium automotive protection services throughout Bucks County, Montgomery County and the Lehigh Valley.">
+    <meta name="twitter:image" content="https://shine-and-protect.com/images/full-vehicle.jpg">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css?v=20260804-1">
+
+    <style>
+        .locations-page {
+            background:
+                radial-gradient(circle at 15% 12%, rgba(212, 175, 55, 0.09), transparent 30%),
+                radial-gradient(circle at 85% 45%, rgba(212, 175, 55, 0.06), transparent 30%),
+                var(--dark-bg);
+        }
+
+        .locations-hero {
+            position: relative;
+            min-height: 68vh;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            padding: 150px 0 90px;
+            background-image:
+                linear-gradient(90deg, rgba(8, 11, 15, 0.96) 0%, rgba(8, 11, 15, 0.82) 48%, rgba(8, 11, 15, 0.46) 100%),
+                url('images/full-vehicle.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .locations-hero::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, transparent 55%, var(--dark-bg) 100%);
+            pointer-events: none;
+        }
+
+        .locations-hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+        }
+
+        .locations-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 18px;
+            color: var(--primary-light);
+            font-size: 0.82rem;
+            font-weight: 800;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+        }
+
+        .locations-eyebrow::before {
+            content: "";
+            width: 38px;
+            height: 2px;
+            background: var(--gradient-primary);
+        }
+
+        .locations-hero h1 {
+            margin: 0;
+            max-width: 760px;
+            font-family: var(--font-heading);
+            font-size: clamp(3.4rem, 7vw, 6.7rem);
+            font-weight: 400;
+            line-height: 0.94;
+            letter-spacing: 0.015em;
+            text-transform: uppercase;
+        }
+
+        .locations-hero h1 span {
+            display: block;
+            color: var(--primary-color);
+        }
+
+        .locations-hero-copy {
+            max-width: 690px;
+            margin: 26px 0 32px;
+            color: var(--text-secondary);
+            font-size: clamp(1rem, 1.7vw, 1.16rem);
+            line-height: 1.75;
+        }
+
+        .locations-hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+        }
+
+        .locations-trust-strip {
+            position: relative;
+            z-index: 2;
+            margin-top: -34px;
+        }
+
+        .locations-trust-grid {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            overflow: hidden;
+            border: 1px solid rgba(212, 175, 55, 0.22);
+            border-radius: 18px;
+            background: rgba(21, 27, 33, 0.96);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.36);
+            backdrop-filter: blur(16px);
+        }
+
+        .locations-trust-item {
+            min-height: 104px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 24px;
+            border-right: 1px solid rgba(255, 255, 255, 0.07);
+        }
+
+        .locations-trust-item:last-child {
+            border-right: 0;
+        }
+
+        .locations-trust-icon {
+            width: 42px;
+            height: 42px;
+            flex: 0 0 42px;
+            display: grid;
+            place-items: center;
+            border: 1px solid rgba(212, 175, 55, 0.34);
+            border-radius: 12px;
+            color: var(--primary-color);
+            background: rgba(212, 175, 55, 0.08);
+        }
+
+        .locations-trust-item strong {
+            display: block;
+            margin-bottom: 2px;
+            color: var(--text-primary);
+            font-size: 0.95rem;
+        }
+
+        .locations-trust-item span {
+            display: block;
+            color: var(--text-muted);
+            font-size: 0.82rem;
+            line-height: 1.4;
+        }
+
+        .locations-section {
+            padding: 105px 0;
+        }
+
+        .locations-section-heading {
+            max-width: 760px;
+            margin: 0 auto 50px;
+            text-align: center;
+        }
+
+        .locations-section-label {
+            display: block;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+            font-size: 0.82rem;
+            font-weight: 800;
+            letter-spacing: 0.17em;
+            text-transform: uppercase;
+        }
+
+        .locations-section-heading h2 {
+            margin: 0 0 15px;
+            font-family: var(--font-heading);
+            font-size: clamp(2.7rem, 5vw, 4.4rem);
+            font-weight: 400;
+            line-height: 1;
+            letter-spacing: 0.02em;
+            text-transform: uppercase;
+        }
+
+        .locations-section-heading p {
+            color: var(--text-secondary);
+            font-size: 1.02rem;
+            line-height: 1.75;
+        }
+
+        .locations-grid {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 18px;
+        }
+
+        .location-card {
+            position: relative;
+            min-height: 270px;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            padding: 28px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 18px;
+            background:
+                linear-gradient(145deg, rgba(255, 255, 255, 0.035), rgba(255, 255, 255, 0.008)),
+                var(--dark-surface);
+            box-shadow: 0 13px 32px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .location-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--gradient-primary);
+            transform: scaleX(0.28);
+            transform-origin: left;
+            transition: transform 0.3s ease;
+        }
+
+        .location-card:hover {
+            transform: translateY(-7px);
+            border-color: rgba(212, 175, 55, 0.45);
+            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.35);
+        }
+
+        .location-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .location-card-top {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 16px;
+            margin-bottom: 26px;
+        }
+
+        .location-card-icon {
+            width: 50px;
+            height: 50px;
+            display: grid;
+            place-items: center;
+            border: 1px solid rgba(212, 175, 55, 0.28);
+            border-radius: 14px;
+            color: var(--primary-color);
+            background: rgba(212, 175, 55, 0.08);
+            font-size: 1.15rem;
+        }
+
+        .location-region {
+            padding: 7px 10px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 999px;
+            color: var(--text-muted);
+            background: rgba(255, 255, 255, 0.025);
+            font-size: 0.68rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .location-card h3 {
+            margin: 0 0 10px;
+            font-family: var(--font-heading);
+            font-size: 2rem;
+            font-weight: 400;
+            line-height: 1;
+            letter-spacing: 0.02em;
+            text-transform: uppercase;
+        }
+
+        .location-card p {
+            margin: 0;
+            color: var(--text-secondary);
+            font-size: 0.91rem;
+            line-height: 1.65;
+        }
+
+        .location-card-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: auto;
+            padding-top: 22px;
+            color: var(--primary-light);
+            font-size: 0.82rem;
+            font-weight: 800;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+
+        .location-card-link i {
+            transition: transform 0.25s ease;
+        }
+
+        .location-card:hover .location-card-link i {
+            transform: translateX(4px);
+        }
+
+        .locations-service-band {
+            padding: 100px 0;
+            background: linear-gradient(180deg, rgba(26, 31, 38, 0.55), rgba(15, 20, 25, 0));
+        }
+
+        .locations-service-grid {
+            display: grid;
+            grid-template-columns: 1.05fr 0.95fr;
+            gap: 48px;
+            align-items: center;
+        }
+
+        .locations-service-copy h2 {
+            margin: 0 0 18px;
+            font-family: var(--font-heading);
+            font-size: clamp(2.8rem, 5vw, 4.8rem);
+            font-weight: 400;
+            line-height: 1;
+            text-transform: uppercase;
+        }
+
+        .locations-service-copy h2 span {
+            color: var(--primary-color);
+        }
+
+        .locations-service-copy > p {
+            max-width: 650px;
+            margin-bottom: 28px;
+            color: var(--text-secondary);
+            line-height: 1.78;
+        }
+
+        .locations-service-list {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 14px;
+        }
+
+        .locations-service-list li {
+            display: flex;
+            align-items: center;
+            gap: 11px;
+            color: var(--text-primary);
+            font-size: 0.92rem;
+        }
+
+        .locations-service-list i {
+            color: var(--primary-color);
+        }
+
+        .locations-service-panel {
+            padding: 34px;
+            border: 1px solid rgba(212, 175, 55, 0.23);
+            border-radius: 22px;
+            background:
+                linear-gradient(145deg, rgba(212, 175, 55, 0.08), rgba(255, 255, 255, 0.015)),
+                var(--dark-surface);
+            box-shadow: 0 22px 55px rgba(0, 0, 0, 0.28);
+        }
+
+        .locations-service-panel h3 {
+            margin: 0 0 10px;
+            font-family: var(--font-heading);
+            font-size: 2.2rem;
+            font-weight: 400;
+            text-transform: uppercase;
+        }
+
+        .locations-service-panel p {
+            margin-bottom: 24px;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        .locations-service-panel .btn {
+            width: 100%;
+            justify-content: center;
+        }
+
+        .locations-faq {
+            padding: 100px 0;
+        }
+
+        .locations-faq-list {
+            max-width: 920px;
+            margin: 0 auto;
+            display: grid;
+            gap: 14px;
+        }
+
+        .locations-faq-item {
+            padding: 26px 28px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+            background: rgba(26, 31, 38, 0.75);
+        }
+
+        .locations-faq-item h3 {
+            margin: 0 0 8px;
+            color: var(--text-primary);
+            font-size: 1.04rem;
+        }
+
+        .locations-faq-item p {
+            margin: 0;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        .locations-final-cta {
+            padding: 42px 0 100px;
+        }
+
+        .locations-final-cta-inner {
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 32px;
+            padding: 44px;
+            border: 1px solid rgba(212, 175, 55, 0.28);
+            border-radius: 22px;
+            background:
+                linear-gradient(100deg, rgba(212, 175, 55, 0.14), rgba(212, 175, 55, 0.025)),
+                var(--dark-surface);
+        }
+
+        .locations-final-cta-inner::after {
+            content: "";
+            position: absolute;
+            right: -80px;
+            top: -120px;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: rgba(212, 175, 55, 0.08);
+            filter: blur(10px);
+        }
+
+        .locations-final-cta-copy {
+            position: relative;
+            z-index: 1;
+        }
+
+        .locations-final-cta h2 {
+            margin: 0 0 8px;
+            font-family: var(--font-heading);
+            font-size: clamp(2.4rem, 4vw, 3.7rem);
+            font-weight: 400;
+            line-height: 1;
+            text-transform: uppercase;
+        }
+
+        .locations-final-cta p {
+            margin: 0;
+            color: var(--text-secondary);
+        }
+
+        .locations-final-cta-actions {
+            position: relative;
+            z-index: 1;
+            flex: 0 0 auto;
+            display: flex;
+            gap: 12px;
+        }
+
+        @media (max-width: 1050px) {
+            .locations-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .locations-trust-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .locations-trust-item:nth-child(2) {
+                border-right: 0;
+            }
+
+            .locations-trust-item:nth-child(-n + 2) {
+                border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+            }
+
+            .locations-service-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .locations-hero {
+                min-height: auto;
+                padding: 118px 0 82px;
+                background-position: 65% center;
+            }
+
+            .locations-hero .container,
+            .locations-trust-strip .container,
+            .locations-section .container,
+            .locations-service-band .container,
+            .locations-faq .container,
+            .locations-final-cta .container {
+                padding-left: 18px;
+                padding-right: 18px;
+            }
+
+            .locations-hero h1 {
+                font-size: clamp(3.1rem, 15vw, 5rem);
+            }
+
+            .locations-hero-actions,
+            .locations-final-cta-actions {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .locations-hero-actions .btn,
+            .locations-final-cta-actions .btn {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .locations-trust-strip {
+                margin-top: -24px;
+            }
+
+            .locations-trust-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .locations-trust-item,
+            .locations-trust-item:nth-child(2) {
+                border-right: 0;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+            }
+
+            .locations-trust-item:last-child {
+                border-bottom: 0;
+            }
+
+            .locations-section,
+            .locations-service-band,
+            .locations-faq {
+                padding: 78px 0;
+            }
+
+            .locations-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .location-card {
+                min-height: 245px;
+                padding: 24px;
+            }
+
+            .locations-service-list {
+                grid-template-columns: 1fr;
+            }
+
+            .locations-service-panel {
+                padding: 26px;
+            }
+
+            .locations-final-cta-inner {
+                align-items: stretch;
+                flex-direction: column;
+                padding: 30px 24px;
+            }
+        }
+    </style>
+</head>
+<body class="locations-page">
+    <nav class="navbar" id="navbar">
+        <div class="container nav-container">
+            <a href="index.html#home" class="logo-link" aria-label="Shine & Protect home">
+                <img src="images/logo.png" alt="Shine & Protect Logo" class="logo">
+                <span class="logo-text">Shine & Protect</span>
+            </a>
+
+            <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle menu" aria-controls="navMenu" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html#home" class="nav-link">Home</a></li>
+                <li><a href="index.html#about" class="nav-link">About</a></li>
+                <li><a href="index.html#services" class="nav-link">Services</a></li>
+                <li><a href="index.html#pricing" class="nav-link">Pricing</a></li>
+                <li><a href="index.html#gallery" class="nav-link">Gallery</a></li>
+                <li><a href="knowledge-center.html" class="nav-link">Knowledge Center</a></li>
+                <li><a href="index.html#contact" class="nav-link">Contact</a></li>
+                <li>
+                    <a href="tel:2672270089" class="nav-link cta-link">
+                        <i class="fas fa-phone"></i> (267) 227-0089
+                    </a>
+                </li>
+            </ul>
         </div>
-        
-        <div class="card">
-        <h3><a href="paint-protection-film-bethlehem.html">Bethlehem</a></h3>
-        <p>Premium PPF installation for luxury, performance and daily driven vehicles.</p>
-        </div>
-        
-        <div class="card">
-        <h3><a href="paint-protection-film-easton.html">Easton</a></h3>
-        <p>Protect your vehicle from rock chips, road debris and everyday driving damage.</p>
-        </div>
-        
-        <div class="card">
-        <h3><a href="paint-protection-film-quakertown.html">Quakertown</a></h3>
-        <p>Local Paint Protection Film installation with meticulous attention to detail.</p>
-        </div>
-        
-        </div>
-        
+    </nav>
+
+    <div class="menu-overlay" id="menuOverlay"></div>
+
+    <main>
+        <section class="locations-hero">
+            <div class="container">
+                <div class="locations-hero-content" data-aos="fade-up">
+                    <span class="locations-eyebrow">Areas We Serve</span>
+                    <h1>Premium Vehicle Protection <span>Near You</span></h1>
+                    <p class="locations-hero-copy">
+                        Shine & Protect provides professional Paint Protection Film, ceramic coating, window tint and paint correction for drivers throughout Bucks County, Montgomery County, the Lehigh Valley and surrounding Pennsylvania communities.
+                    </p>
+                    <div class="locations-hero-actions">
+                        <a href="index.html#contact" class="btn btn-primary btn-large">
+                            <i class="fas fa-calendar-check"></i> Request a Free Quote
+                        </a>
+                        <a href="tel:2672270089" class="btn btn-outline btn-large">
+                            <i class="fas fa-phone"></i> Call (267) 227-0089
+                        </a>
+                    </div>
+                </div>
+            </div>
         </section>
+
+        <div class="locations-trust-strip">
+            <div class="container">
+                <div class="locations-trust-grid">
+                    <div class="locations-trust-item">
+                        <div class="locations-trust-icon"><i class="fas fa-shield-alt"></i></div>
+                        <div><strong>Premium PPF</strong><span>Self-healing film protection</span></div>
+                    </div>
+                    <div class="locations-trust-item">
+                        <div class="locations-trust-icon"><i class="fas fa-crosshairs"></i></div>
+                        <div><strong>Precision Installation</strong><span>Detailed fitment and finish</span></div>
+                    </div>
+                    <div class="locations-trust-item">
+                        <div class="locations-trust-icon"><i class="fas fa-car-side"></i></div>
+                        <div><strong>Luxury Vehicle Care</strong><span>Professional handling from start to finish</span></div>
+                    </div>
+                    <div class="locations-trust-item">
+                        <div class="locations-trust-icon"><i class="fas fa-location-dot"></i></div>
+                        <div><strong>Regional Service</strong><span>Bucks, Montgomery and Lehigh Valley</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <section class="locations-section" id="service-areas">
+            <div class="container">
+                <div class="locations-section-heading" data-aos="fade-up">
+                    <span class="locations-section-label">Local Service Areas</span>
+                    <h2>Communities We Proudly Serve</h2>
+                    <p>
+                        Our shop is conveniently positioned to serve vehicle owners across Upper Bucks County, the Lehigh Valley and nearby Montgomery County communities.
+                    </p>
+                </div>
+
+                <div class="locations-grid">
+                    <article class="location-card" data-aos="fade-up" data-aos-delay="50">
+                        <div class="location-card-top">
+                            <div class="location-card-icon"><i class="fas fa-location-dot"></i></div>
+                            <span class="location-region">Upper Bucks</span>
+                        </div>
+                        <h3>Quakertown</h3>
+                        <p>Local Paint Protection Film and vehicle protection services with meticulous attention to every edge, contour and detail.</p>
+                        <a class="location-card-link" href="index.html#contact">Request a quote <i class="fas fa-arrow-right"></i></a>
+                    </article>
+
+                    <article class="location-card" data-aos="fade-up" data-aos-delay="100">
+                        <div class="location-card-top">
+                            <div class="location-card-icon"><i class="fas fa-city"></i></div>
+                            <span class="location-region">Lehigh Valley</span>
+                        </div>
+                        <h3>Allentown</h3>
+                        <p>Premium PPF, ceramic coating and appearance protection for luxury, performance and daily-driven vehicles.</p>
+                        <a class="location-card-link" href="index.html#contact">Request a quote <i class="fas fa-arrow-right"></i></a>
+                    </article>
+
+                    <article class="location-card" data-aos="fade-up" data-aos-delay="150">
+                        <div class="location-card-top">
+                            <div class="location-card-icon"><i class="fas fa-building"></i></div>
+                            <span class="location-region">Lehigh Valley</span>
+                        </div>
+                        <h3>Bethlehem</h3>
+                        <p>Professional protection against rock chips, road debris, UV exposure and everyday driving wear.</p>
+                        <a class="location-card-link" href="index.html#contact">Request a quote <i class="fas fa-arrow-right"></i></a>
+                    </article>
+
+                    <article class="location-card" data-aos="fade-up" data-aos-delay="200">
+                        <div class="location-card-top">
+                            <div class="location-card-icon"><i class="fas fa-road"></i></div>
+                            <span class="location-region">Lehigh Valley</span>
+                        </div>
+                        <h3>Easton</h3>
+                        <p>Precision-installed automotive protection designed to preserve your vehicle's finish and long-term value.</p>
+                        <a class="location-card-link" href="index.html#contact">Request a quote <i class="fas fa-arrow-right"></i></a>
+                    </article>
+
+                    <article class="location-card" data-aos="fade-up" data-aos-delay="50">
+                        <div class="location-card-top">
+                            <div class="location-card-icon"><i class="fas fa-map"></i></div>
+                            <span class="location-region">Bucks County</span>
+                        </div>
+                        <h3>Perkasie</h3>
+                        <p>Premium vehicle protection options tailored to your driving habits, vehicle type and desired coverage.</p>
+                        <a class="location-card-link" href="index.html#contact">Request a quote <i class="fas fa-arrow-right"></i></a>
+                    </article>
+
+                    <article class="location-card" data-aos="fade-up" data-aos-delay="100">
+                        <div class="location-card-top">
+                            <div class="location-card-icon"><i class="fas fa-map-pin"></i></div>
+                            <span class="location-region">Bucks County</span>
+                        </div>
+                        <h3>Doylestown</h3>
+                        <p>High-quality PPF and finish enhancement for owners who expect discreet protection and premium workmanship.</p>
+                        <a class="location-card-link" href="index.html#contact">Request a quote <i class="fas fa-arrow-right"></i></a>
+                    </article>
+
+                    <article class="location-card" data-aos="fade-up" data-aos-delay="150">
+                        <div class="location-card-top">
+                            <div class="location-card-icon"><i class="fas fa-route"></i></div>
+                            <span class="location-region">Montgomery</span>
+                        </div>
+                        <h3>Lansdale</h3>
+                        <p>Convenient access to professional paint protection, coating, tint and correction services.</p>
+                        <a class="location-card-link" href="index.html#contact">Request a quote <i class="fas fa-arrow-right"></i></a>
+                    </article>
+
+                    <article class="location-card" data-aos="fade-up" data-aos-delay="200">
+                        <div class="location-card-top">
+                            <div class="location-card-icon"><i class="fas fa-location-crosshairs"></i></div>
+                            <span class="location-region">Regional</span>
+                        </div>
+                        <h3>Nearby Areas</h3>
+                        <p>Not listed here? Contact us. We regularly serve clients from surrounding Pennsylvania communities.</p>
+                        <a class="location-card-link" href="tel:2672270089">Call to confirm <i class="fas fa-arrow-right"></i></a>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="locations-service-band">
+            <div class="container">
+                <div class="locations-service-grid">
+                    <div class="locations-service-copy" data-aos="fade-right">
+                        <span class="locations-section-label">Protection Built Around Your Vehicle</span>
+                        <h2>More Than a Service Area. <span>A Better Standard.</span></h2>
+                        <p>
+                            Every vehicle receives a careful consultation, professional preparation and a protection plan based on how the vehicle is driven. Whether you need targeted front-end coverage or full-body protection, we focus on clean installation and lasting results.
+                        </p>
+                        <ul class="locations-service-list">
+                            <li><i class="fas fa-check"></i> Paint Protection Film</li>
+                            <li><i class="fas fa-check"></i> Ceramic Coating</li>
+                            <li><i class="fas fa-check"></i> Window Tint</li>
+                            <li><i class="fas fa-check"></i> Paint Correction</li>
+                            <li><i class="fas fa-check"></i> Luxury & performance vehicles</li>
+                            <li><i class="fas fa-check"></i> Customized coverage options</li>
+                        </ul>
+                    </div>
+
+                    <aside class="locations-service-panel" data-aos="fade-left">
+                        <div class="locations-trust-icon"><i class="fas fa-comments"></i></div>
+                        <h3>Unsure Which Package Fits?</h3>
+                        <p>Tell us your vehicle, driving habits and protection goals. We will recommend the coverage that makes sense without overselling unnecessary work.</p>
+                        <a href="index.html#contact" class="btn btn-primary btn-large">
+                            <i class="fas fa-file-invoice"></i> Get a Personalized Quote
+                        </a>
+                    </aside>
+                </div>
+            </div>
+        </section>
+
+        <section class="locations-faq">
+            <div class="container">
+                <div class="locations-section-heading" data-aos="fade-up">
+                    <span class="locations-section-label">Service Area FAQ</span>
+                    <h2>Common Questions</h2>
+                </div>
+
+                <div class="locations-faq-list">
+                    <article class="locations-faq-item" data-aos="fade-up">
+                        <h3>Do you only serve Quakertown?</h3>
+                        <p>No. Shine & Protect serves vehicle owners throughout Bucks County, Montgomery County, the Lehigh Valley and nearby Pennsylvania communities.</p>
+                    </article>
+                    <article class="locations-faq-item" data-aos="fade-up">
+                        <h3>Can I request a quote before making the drive?</h3>
+                        <p>Yes. Send your vehicle year, make, model and the service you are considering. We can provide guidance and a personalized quote before scheduling.</p>
+                    </article>
+                    <article class="locations-faq-item" data-aos="fade-up">
+                        <h3>My city is not listed. Can I still book?</h3>
+                        <p>Absolutely. The locations above represent our primary service region, but clients regularly visit us from surrounding areas. Call or submit the quote form to confirm.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="locations-final-cta">
+            <div class="container">
+                <div class="locations-final-cta-inner" data-aos="fade-up">
+                    <div class="locations-final-cta-copy">
+                        <h2>Ready to Protect Your Vehicle?</h2>
+                        <p>Request a personalized quote and schedule your installation.</p>
+                    </div>
+                    <div class="locations-final-cta-actions">
+                        <a href="index.html#contact" class="btn btn-primary btn-large">Get Free Quote</a>
+                        <a href="tel:2672270089" class="btn btn-outline btn-large">Call Now</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer" aria-label="Site footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <a href="index.html#home" class="footer-brand-link" aria-label="Shine & Protect home">
+                        <img src="images/logo.png" alt="Shine & Protect" class="footer-logo">
+                    </a>
+                    <p class="footer-tagline">
+                        Paint Protection Film, Ceramic Coating, Window Tint & Paint Correction specialists serving Bucks County, Montgomery County, Lehigh Valley and surrounding areas.
+                    </p>
+                    <div class="footer-socials" aria-label="Social media">
+                        <a href="https://www.instagram.com/shineandprotectshop/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-column">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="index.html#services">Paint Protection Film</a></li>
+                        <li><a href="index.html#services">Ceramic Coating</a></li>
+                        <li><a href="index.html#services">Window Tint</a></li>
+                        <li><a href="index.html#services">Paint Correction</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h4>Explore</h4>
+                    <ul>
+                        <li><a href="index.html#about">About</a></li>
+                        <li><a href="index.html#pricing">Pricing</a></li>
+                        <li><a href="index.html#gallery">Gallery</a></li>
+                        <li><a href="knowledge-center.html">Knowledge Center</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column footer-contact">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li><a href="tel:2672270089"><i class="fas fa-phone"></i> (267) 227-0089</a></li>
+                        <li><a href="mailto:shineandprotectshop@gmail.com"><i class="fas fa-envelope"></i> Email Us</a></li>
+                        <li><span><i class="fas fa-location-dot"></i> Quakertown, Pennsylvania</span></li>
+                        <li><span><i class="fas fa-clock"></i> By appointment</span></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 Shine & Protect. All rights reserved.</p>
+                <div class="footer-bottom-links">
+                    <a href="index.html#contact">Request a Quote</a>
+                    <a href="tel:2672270089">Call Now</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <a
+        href="https://www.instagram.com/shineandprotectshop/"
+        class="floating-instagram"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="See our latest installations on Instagram"
+    >
+        <span class="floating-instagram-icon" aria-hidden="true"><i class="fab fa-instagram"></i></span>
+        <span class="floating-instagram-text">See Our Latest<br>Installations</span>
+    </a>
+
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "name": "Automotive Paint Protection Services",
+      "provider": {
+        "@type": "AutomotiveBusiness",
+        "name": "Shine & Protect",
+        "url": "https://shine-and-protect.com",
+        "telephone": "+12672270089",
+        "email": "shineandprotectshop@gmail.com",
+        "image": "https://shine-and-protect.com/images/logo.png"
+      },
+      "serviceType": [
+        "Paint Protection Film",
+        "Ceramic Coating",
+        "Window Tint",
+        "Paint Correction"
+      ],
+      "areaServed": [
+        {"@type": "City", "name": "Quakertown"},
+        {"@type": "City", "name": "Allentown"},
+        {"@type": "City", "name": "Bethlehem"},
+        {"@type": "City", "name": "Easton"},
+        {"@type": "City", "name": "Perkasie"},
+        {"@type": "City", "name": "Doylestown"},
+        {"@type": "City", "name": "Lansdale"},
+        {"@type": "AdministrativeArea", "name": "Bucks County"},
+        {"@type": "AdministrativeArea", "name": "Montgomery County"},
+        {"@type": "AdministrativeArea", "name": "Lehigh Valley"}
+      ]
+    }
+    </script>
+
+    <script src="js/main.js?v=20260804-1"></script>
+</body>
+</html>
