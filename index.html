@@ -48,7 +48,167 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
 
     <!-- Main Stylesheet -->
-    <link rel="stylesheet" href="css/style.css?v=20260728-1">
+    <link rel="stylesheet" href="css/style.css?v=20260804-2">
+
+    <!-- Premium Services Cards: scoped overrides so the Knowledge Center cards are unchanged -->
+    <style>
+        .services-section .services-grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 1.35rem;
+            max-width: 1180px;
+            margin: 3rem auto 0;
+            align-items: stretch;
+        }
+
+        .services-section .service-card {
+            display: flex;
+            flex-direction: column;
+            min-height: 0;
+            padding: 1.75rem;
+            border-radius: 20px;
+            background: linear-gradient(145deg, rgba(25, 25, 28, 0.96), rgba(13, 13, 15, 0.94));
+            border: 1px solid rgba(255, 255, 255, 0.09);
+            box-shadow: 0 18px 45px rgba(0, 0, 0, 0.24);
+            isolation: isolate;
+        }
+
+        .services-section .service-card::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            z-index: -1;
+            border-radius: inherit;
+            background: radial-gradient(circle at 88% 8%, rgba(212, 175, 55, 0.13), transparent 35%);
+            pointer-events: none;
+        }
+
+        .services-section .service-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(212, 175, 55, 0.55);
+            box-shadow: 0 24px 55px rgba(0, 0, 0, 0.34);
+        }
+
+        .services-section .service-card.featured {
+            background: linear-gradient(145deg, rgba(37, 32, 19, 0.97), rgba(14, 14, 16, 0.96));
+            border-color: rgba(212, 175, 55, 0.62);
+        }
+
+        .services-section .service-card-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 1rem;
+            margin-bottom: 1.1rem;
+        }
+
+        .services-section .service-icon {
+            width: 56px;
+            height: 56px;
+            flex: 0 0 56px;
+            margin: 0;
+            border-radius: 15px;
+            box-shadow: 0 10px 28px rgba(212, 175, 55, 0.22);
+        }
+
+        .services-section .service-icon i {
+            font-size: 1.45rem;
+        }
+
+        .services-section .service-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            min-height: 30px;
+            padding: 0.38rem 0.72rem;
+            border: 1px solid rgba(212, 175, 55, 0.36);
+            border-radius: 999px;
+            color: var(--primary-color);
+            background: rgba(212, 175, 55, 0.08);
+            font-size: 0.7rem;
+            font-weight: 800;
+            letter-spacing: 0.09em;
+            line-height: 1;
+            text-transform: uppercase;
+            white-space: nowrap;
+        }
+
+        .services-section .service-title {
+            margin: 0 0 0.65rem;
+            font-size: clamp(1.35rem, 2vw, 1.7rem);
+            line-height: 1.15;
+        }
+
+        .services-section .service-description {
+            margin: 0 0 1rem;
+            max-width: 62ch;
+            font-size: 0.98rem;
+            line-height: 1.62;
+        }
+
+        .services-section .service-features {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 0.55rem;
+            margin: 0 0 1.35rem;
+        }
+
+        .services-section .service-features li {
+            align-items: flex-start;
+            min-width: 0;
+            margin: 0;
+            padding: 0.7rem 0.75rem;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.035);
+            color: rgba(255, 255, 255, 0.76);
+            font-size: 0.84rem;
+            line-height: 1.35;
+        }
+
+        .services-section .service-features i {
+            margin-top: 0.15rem;
+        }
+
+        .services-section .service-card .btn {
+            align-self: flex-start;
+            margin-top: auto;
+            min-width: 170px;
+        }
+
+        @media (max-width: 900px) {
+            .services-section .services-grid {
+                grid-template-columns: 1fr;
+                max-width: 720px;
+            }
+        }
+
+        @media (max-width: 560px) {
+            .services-section .services-grid {
+                margin-top: 2rem;
+                gap: 1rem;
+            }
+
+            .services-section .service-card {
+                padding: 1.3rem;
+                border-radius: 17px;
+            }
+
+            .services-section .service-card-header {
+                align-items: center;
+            }
+
+            .services-section .service-eyebrow {
+                white-space: normal;
+                text-align: center;
+            }
+
+            .services-section .service-features {
+                grid-template-columns: 1fr;
+            }
+
+            .services-section .service-card .btn {
+                width: 100%;
+            }
+        }
+    </style>
     <link rel="preload" as="image" href="images/portfolio/mercedes-amg-gle-53/mercedes-gle53-3.jpeg">
 
     <!-- Google Analytics (Replace G-XXXXXXXXXX with your actual tracking ID) -->
@@ -81,7 +241,7 @@
             <ul class="nav-menu" id="navMenu">
                 <li><a href="#home" class="nav-link">Home</a></li>
                 <li><a href="#about" class="nav-link">About</a></li>
-                <li><a href="#services-details" class="nav-link">Services</a></li>
+                <li><a href="#services" class="nav-link">Services</a></li>
                 <li><a href="#pricing" class="nav-link">Pricing</a></li>
                 <li><a href="#gallery" class="nav-link">Gallery</a></li>
                 <li><a href="knowledge-center.html" class="nav-link">Knowledge Center</a></li>
@@ -191,93 +351,97 @@ Serving Bucks County, Montgomery County, Lehigh Valley &amp; Surrounding Areas
 
     <!-- Services Section -->
     <section class="services-section" id="services">
-        <div class="section-bg-slideshow">
+        <div class="section-bg-slideshow" aria-hidden="true">
             <div class="bg-slide active" style="background-image: url('images/mazda-1.jpg');"></div>
             <div class="bg-slide" style="background-image: url('images/bmw-7.jpg');"></div>
         </div>
         <div class="section-overlay"></div>
+
         <div class="container">
             <div class="section-header" data-aos="fade-up">
                 <span class="section-label">Our Expertise</span>
-                <h2 class="section-title">Vehicle Protection &amp; Enhancement</h2>
+                <h2 class="section-title">Protection Designed Around Your Vehicle</h2>
                 <p class="section-description">
-                    Professional solutions tailored to preserve, restore, and enhance your vehicle.
+                    Premium film, coating, tint, and paint restoration services delivered with precision and attention to detail.
                 </p>
             </div>
 
             <div class="services-grid">
-                <div class="service-card featured" data-aos="fade-up" data-aos-delay="100">
-                    <div class="featured-badge">Most Popular</div>
-                    <div class="service-icon">
-                        <i class="fas fa-shield-alt"></i>
+                <article class="service-card featured" data-aos="fade-up" data-aos-delay="100">
+                    <div class="service-card-header">
+                        <div class="service-icon" aria-hidden="true">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <span class="service-eyebrow">Signature Service</span>
                     </div>
-                    <h3 class="service-title">Paint Protection Film (PPF)</h3>
+                    <h3 class="service-title">Paint Protection Film</h3>
                     <p class="service-description">
-                        Premium Paint Protection Film shields your vehicle from rock chips, scratches, road debris, and environmental damage while preserving its factory finish for years.
+                        Nearly invisible, self-healing protection for high-impact areas or the entire vehicle—installed to preserve the factory finish.
                     </p>
                     <ul class="service-features">
-                        <li><i class="fas fa-check"></i> Self-healing technology</li>
-                        <li><i class="fas fa-check"></i> Rock chip protection</li>
-                        <li><i class="fas fa-check"></i> 99% UV protection</li>
-                        <li><i class="fas fa-check"></i> Up to 10-year warranty</li>
+                        <li><i class="fas fa-check"></i><span>Rock-chip defense</span></li>
+                        <li><i class="fas fa-check"></i><span>Self-healing finish</span></li>
+                        <li><i class="fas fa-check"></i><span>Up to 10-year warranty</span></li>
                     </ul>
                     <a href="#pricing" class="btn btn-primary">View PPF Packages</a>
-                </div>
+                </article>
 
-                <div class="service-card" data-aos="fade-up" data-aos-delay="200">
-                    <div class="service-icon">
-                        <i class="fas fa-droplet"></i>
+                <article class="service-card" data-aos="fade-up" data-aos-delay="150">
+                    <div class="service-card-header">
+                        <div class="service-icon" aria-hidden="true">
+                            <i class="fas fa-droplet"></i>
+                        </div>
+                        <span class="service-eyebrow">Gloss &amp; Protection</span>
                     </div>
                     <h3 class="service-title">Ceramic Coating</h3>
                     <p class="service-description">
-                        Advanced ceramic coatings provide a hydrophobic barrier that enhances gloss, repels water, and makes
-                        maintenance easier. Perfect complement to PPF or standalone protection for stunning shine.
+                        A durable hydrophobic layer that deepens gloss, resists environmental contamination, and makes routine washing easier.
                     </p>
                     <ul class="service-features">
-                        <li><i class="fas fa-check"></i> Hydrophobic protection</li>
-                        <li><i class="fas fa-check"></i> Enhanced gloss &amp; depth</li>
-                        <li><i class="fas fa-check"></i> Easy maintenance</li>
-                        <li><i class="fas fa-check"></i> Long-lasting shine</li>
+                        <li><i class="fas fa-check"></i><span>Hydrophobic surface</span></li>
+                        <li><i class="fas fa-check"></i><span>Enhanced gloss</span></li>
+                        <li><i class="fas fa-check"></i><span>Easier maintenance</span></li>
                     </ul>
-                    <a href="#contact" class="btn btn-secondary">Get Quote</a>
-                </div>
-                <div class="service-card" data-aos="fade-up" data-aos-delay="400">
-                    <div class="service-icon">
-                        <i class="fas fa-window-maximize"></i>
+                    <a href="#contact" class="btn btn-secondary">Request a Quote</a>
+                </article>
+
+                <article class="service-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="service-card-header">
+                        <div class="service-icon" aria-hidden="true">
+                            <i class="fas fa-window-maximize"></i>
+                        </div>
+                        <span class="service-eyebrow">Comfort &amp; Privacy</span>
                     </div>
-                
                     <h3 class="service-title">Window Tint</h3>
-                
                     <p class="service-description">
-                        Premium automotive window tint reduces interior heat, blocks 99% of harmful UV rays, minimizes glare, and enhances privacy while giving your vehicle a sleek factory appearance.
+                        Premium automotive tint for heat rejection, UV protection, reduced glare, and a clean factory-style appearance.
                     </p>
-                
                     <ul class="service-features">
-                        <li><i class="fas fa-check"></i> Heat rejection</li>
-                        <li><i class="fas fa-check"></i> 99% UV protection</li>
-                        <li><i class="fas fa-check"></i> Enhanced privacy</li>
-                        <li><i class="fas fa-check"></i> Reduced glare</li>
+                        <li><i class="fas fa-check"></i><span>Heat rejection</span></li>
+                        <li><i class="fas fa-check"></i><span>99% UV protection</span></li>
+                        <li><i class="fas fa-check"></i><span>Reduced glare</span></li>
                     </ul>
-                
-                    <a href="#contact" class="btn btn-secondary">Get Quote</a>
-                </div>
-                <div class="service-card" data-aos="fade-up" data-aos-delay="400">
-                    <div class="service-icon">
-                        <i class="fas fa-wand-magic-sparkles"></i>
+                    <a href="#contact" class="btn btn-secondary">Request a Quote</a>
+                </article>
+
+                <article class="service-card" data-aos="fade-up" data-aos-delay="250">
+                    <div class="service-card-header">
+                        <div class="service-icon" aria-hidden="true">
+                            <i class="fas fa-wand-magic-sparkles"></i>
+                        </div>
+                        <span class="service-eyebrow">Paint Restoration</span>
                     </div>
                     <h3 class="service-title">Paint Correction</h3>
                     <p class="service-description">
-                        Professional paint correction removes swirl marks, scratches, and imperfections, restoring your vehicle's
-                        paint to showroom condition before applying protection.
+                        Machine polishing that reduces swirl marks, light scratches, and paint defects before protection is installed.
                     </p>
                     <ul class="service-features">
-                        <li><i class="fas fa-check"></i> Removes swirl marks</li>
-                        <li><i class="fas fa-check"></i> Eliminates scratches</li>
-                        <li><i class="fas fa-check"></i> Restores gloss</li>
-                        <li><i class="fas fa-check"></i> Prepares for coating</li>
+                        <li><i class="fas fa-check"></i><span>Swirl-mark removal</span></li>
+                        <li><i class="fas fa-check"></i><span>Gloss restoration</span></li>
+                        <li><i class="fas fa-check"></i><span>Protection-ready finish</span></li>
                     </ul>
-                    <a href="#contact" class="btn btn-secondary">Get Quote</a>
-                </div>
+                    <a href="#contact" class="btn btn-secondary">Request a Quote</a>
+                </article>
             </div>
         </div>
     </section>
