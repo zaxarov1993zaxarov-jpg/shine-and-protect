@@ -209,6 +209,339 @@
             }
         }
     </style>
+
+    <!-- Premium Hero + compact desktop navigation -->
+    <style>
+        /* Compact desktop navigation */
+        @media (min-width: 901px) {
+            .navbar {
+                padding: 0 !important;
+            }
+
+            .navbar .nav-container {
+                min-height: 84px !important;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                gap: 28px;
+            }
+
+            .navbar .logo-link {
+                display: flex;
+                align-items: center;
+                gap: 12px;
+                flex: 0 0 auto;
+            }
+
+            .navbar .logo {
+                width: 64px !important;
+                height: 64px !important;
+                max-width: 64px !important;
+                object-fit: contain;
+            }
+
+            .navbar .logo-text {
+                display: inline-block !important;
+                max-width: none !important;
+                margin: 0 !important;
+                font-size: 1.18rem !important;
+                line-height: 1 !important;
+                letter-spacing: 0.08em !important;
+                white-space: nowrap !important;
+            }
+
+            .navbar .nav-menu {
+                display: flex;
+                align-items: center;
+                gap: 1.05rem !important;
+                margin-left: auto;
+            }
+
+            .navbar .nav-link {
+                font-size: 0.86rem !important;
+                white-space: nowrap;
+            }
+
+            .navbar .cta-link {
+                padding: 0.65rem 0.9rem !important;
+            }
+        }
+
+        /* Hero */
+        .hero {
+            min-height: calc(100svh - 84px);
+            display: flex;
+            align-items: center;
+            isolation: isolate;
+        }
+
+        .hero .hero-video-container {
+            inset: 0;
+        }
+
+        .hero .hero-overlay {
+            background:
+                linear-gradient(90deg, rgba(6, 8, 11, 0.95) 0%, rgba(6, 8, 11, 0.82) 39%, rgba(6, 8, 11, 0.42) 68%, rgba(6, 8, 11, 0.20) 100%),
+                linear-gradient(180deg, rgba(6, 8, 11, 0.14) 0%, rgba(6, 8, 11, 0.04) 45%, rgba(6, 8, 11, 0.62) 100%);
+        }
+
+        .hero .hero-content {
+            width: 100%;
+            padding: 92px 0 66px;
+        }
+
+        .hero .hero-content .container {
+            max-width: 1240px;
+        }
+
+        .hero-copy {
+            max-width: 800px;
+            margin: 0;
+            text-align: left;
+        }
+
+        .hero-kicker {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+            color: var(--primary-light);
+            font-size: 0.76rem;
+            font-weight: 800;
+            letter-spacing: 0.17em;
+            text-transform: uppercase;
+        }
+
+        .hero-kicker::before {
+            content: "";
+            width: 34px;
+            height: 2px;
+            background: var(--gradient-primary);
+        }
+
+        .hero .hero-title {
+            margin: 0;
+            max-width: 780px;
+            font-family: var(--font-heading);
+            font-size: clamp(4rem, 6.2vw, 6.45rem) !important;
+            font-weight: 400;
+            line-height: 0.9 !important;
+            letter-spacing: 0.012em;
+            text-align: left;
+            text-transform: uppercase;
+            text-shadow: 0 10px 32px rgba(0, 0, 0, 0.34);
+        }
+
+        /* Override old title-line sizing from the original hero */
+        .hero .hero-title .title-line-1,
+        .hero .hero-title .title-line-2 {
+            display: block;
+            margin: 0 !important;
+            padding: 0 !important;
+            font-size: inherit !important;
+            font-weight: inherit !important;
+            line-height: inherit !important;
+            letter-spacing: inherit !important;
+            text-align: left !important;
+            transform: none !important;
+        }
+
+        .hero .hero-title .title-line-1 {
+            color: var(--text-primary);
+        }
+
+        .hero .hero-title .title-line-2 {
+            color: var(--primary-color);
+        }
+
+        .hero .hero-subtitle {
+            max-width: 675px;
+            margin: 22px 0 0 !important;
+            color: rgba(255, 255, 255, 0.76);
+            font-size: 1rem !important;
+            font-weight: 400;
+            line-height: 1.65 !important;
+            text-align: left !important;
+        }
+
+        .hero .hero-subtitle strong {
+            color: var(--text-primary);
+            font-weight: 700;
+        }
+
+        .hero .hero-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: flex-start !important;
+            gap: 12px;
+            margin-top: 25px !important;
+        }
+
+        .hero .hero-buttons .btn {
+            min-height: 50px;
+            padding: 0.8rem 1.25rem !important;
+        }
+
+        .hero .hero-proof {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            max-width: 760px;
+            margin-top: 24px;
+        }
+
+        .hero .hero-proof-item {
+            display: flex;
+            align-items: center;
+            gap: 9px;
+            min-height: 48px;
+            padding: 9px 12px;
+            border: 1px solid rgba(255, 255, 255, 0.09);
+            border-radius: 12px;
+            background: rgba(12, 14, 17, 0.50);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+
+        .hero .hero-proof-icon {
+            width: 30px;
+            height: 30px;
+            flex: 0 0 30px;
+            display: grid;
+            place-items: center;
+            border: 1px solid rgba(212, 175, 55, 0.33);
+            border-radius: 9px;
+            color: var(--primary-color);
+            background: rgba(212, 175, 55, 0.08);
+            font-size: 0.78rem;
+        }
+
+        .hero .hero-proof-copy strong {
+            display: block;
+            color: var(--text-primary);
+            font-size: 0.78rem;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .hero .hero-proof-copy span {
+            display: none;
+        }
+
+        .hero .hero-location-line {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 7px 15px;
+            margin-top: 14px;
+            color: rgba(255, 255, 255, 0.55);
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-align: left;
+        }
+
+        .hero .hero-location-line span {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .hero .hero-location-line i {
+            color: var(--primary-color);
+            font-size: 0.68rem;
+        }
+
+        .hero .scroll-indicator {
+            opacity: 0.55;
+        }
+
+        @media (max-width: 1100px) and (min-width: 901px) {
+            .navbar .logo-text {
+                display: none !important;
+            }
+
+            .navbar .nav-menu {
+                gap: 0.8rem !important;
+            }
+
+            .hero .hero-title {
+                font-size: clamp(3.8rem, 6.7vw, 5.7rem) !important;
+            }
+        }
+
+        @media (max-width: 900px) {
+            .hero {
+                min-height: 92svh;
+            }
+
+            .hero .hero-content {
+                padding: 126px 0 82px;
+            }
+
+            .hero .hero-overlay {
+                background:
+                    linear-gradient(90deg, rgba(6, 8, 11, 0.93) 0%, rgba(6, 8, 11, 0.78) 60%, rgba(6, 8, 11, 0.48) 100%),
+                    linear-gradient(180deg, rgba(6, 8, 11, 0.16), rgba(6, 8, 11, 0.74));
+            }
+
+            .hero .hero-title {
+                font-size: clamp(3.8rem, 11vw, 5.8rem) !important;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .hero {
+                min-height: auto;
+            }
+
+            .hero .hero-content {
+                padding: 112px 0 70px;
+            }
+
+            .hero-kicker {
+                font-size: 0.68rem;
+                letter-spacing: 0.13em;
+            }
+
+            .hero .hero-title {
+                font-size: clamp(3rem, 15vw, 4.7rem) !important;
+                line-height: 0.92 !important;
+            }
+
+            .hero .hero-subtitle {
+                margin-top: 18px !important;
+                font-size: 0.94rem !important;
+            }
+
+            .hero .hero-buttons {
+                display: grid;
+                grid-template-columns: 1fr;
+                margin-top: 22px !important;
+            }
+
+            .hero .hero-buttons .btn {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .hero .hero-proof {
+                display: grid;
+                grid-template-columns: 1fr;
+                margin-top: 20px;
+            }
+
+            .hero .hero-location-line {
+                gap: 6px 11px;
+                margin-top: 13px;
+                font-size: 0.71rem;
+            }
+
+            .hero .scroll-indicator {
+                display: none;
+            }
+        }
+    </style>
+
     <link rel="preload" as="image" href="images/portfolio/mercedes-amg-gle-53/mercedes-gle53-3.jpeg">
 
     <!-- Google Analytics (Replace G-XXXXXXXXXX with your actual tracking ID) -->
@@ -258,8 +591,7 @@
 
     <!-- Hero Section with Real PPF Work Slideshow -->
     <section class="hero" id="home">
-        <div class="hero-video-container">
-            <!-- Real Shop Work Background Slideshow -->
+        <div class="hero-video-container" aria-hidden="true">
             <div class="hero-slideshow">
                 <div class="slide active" style="background-image: url('images/bmw-1.jpg');"></div>
                 <div class="slide" style="background-image: url('images/lexus-2.jpg');"></div>
@@ -272,46 +604,69 @@
 
         <div class="hero-content">
             <div class="container">
-                <h1 class="hero-title" data-aos="fade-up">
-                    <span class="title-line-1">PREMIUM</span>
-                    <span class="title-line-2">PAINT PROTECTION FILM</span>
-                </h1>
-                <p class="hero-subtitle" data-aos="fade-up" data-aos-delay="200">
-                    Premium Paint Protection Film for Luxury &amp; Performance Vehicles<br>
-Serving Bucks County, Montgomery County, Lehigh Valley &amp; Surrounding Areas
-                </p>
-                <div class="hero-buttons" data-aos="fade-up" data-aos-delay="400">
-                    <a href="#contact" class="btn btn-primary btn-large">
-                        <i class="fas fa-calendar-check"></i> Get Free Quote
-                    </a>
-                    <a href="#pricing" class="btn btn-outline btn-large">
-                        <i class="fas fa-file-invoice-dollar"></i> View PPF Packages
-                    </a>
-                </div>
+                <div class="hero-copy">
+                    <span class="hero-kicker" data-aos="fade-up">Precision Automotive Protection</span>
 
-                <div class="hero-features" data-aos="fade-up" data-aos-delay="600">
-                    <div class="feature-item">
-                        <i class="fas fa-shield-alt"></i>
-                        <span>Premium Protection</span>
+                    <h1 class="hero-title" data-aos="fade-up" data-aos-delay="80">
+                        <span class="title-line-1">Protect The Finish.</span>
+                        <span class="title-line-2">Preserve The Car.</span>
+                    </h1>
+
+                    <p class="hero-subtitle" data-aos="fade-up" data-aos-delay="160">
+                        <strong>Premium Paint Protection Film for luxury, performance, and daily-driven vehicles.</strong>
+                        Precision-installed protection against rock chips, road debris, scratches, and everyday wear.
+                    </p>
+
+                    <div class="hero-buttons" data-aos="fade-up" data-aos-delay="240">
+                        <a href="#contact" class="btn btn-primary btn-large">
+                            <i class="fas fa-calendar-check"></i> Get a Free Quote
+                        </a>
+                        <a href="#pricing" class="btn btn-outline btn-large">
+                            <i class="fas fa-shield-alt"></i> View PPF Packages
+                        </a>
                     </div>
-                    <div class="feature-item">
-                        <i class="fas fa-certificate"></i>
-                        <span>Professional Install</span>
+
+                    <div class="hero-proof" data-aos="fade-up" data-aos-delay="320" aria-label="Why choose Shine & Protect">
+                        <div class="hero-proof-item">
+                            <div class="hero-proof-icon"><i class="fas fa-crosshairs"></i></div>
+                            <div class="hero-proof-copy">
+                                <strong>Precision Installation</strong>
+                                <span>Clean edges. Detailed fitment.</span>
+                            </div>
+                        </div>
+
+                        <div class="hero-proof-item">
+                            <div class="hero-proof-icon"><i class="fas fa-shield-halved"></i></div>
+                            <div class="hero-proof-copy">
+                                <strong>Premium Protection</strong>
+                                <span>Self-healing film options.</span>
+                            </div>
+                        </div>
+
+                        <div class="hero-proof-item">
+                            <div class="hero-proof-icon"><i class="fas fa-car-side"></i></div>
+                            <div class="hero-proof-copy">
+                                <strong>Vehicle-Focused Care</strong>
+                                <span>Luxury &amp; performance experience.</span>
+                            </div>
+                        </div>
                     </div>
-                    <div class="feature-item">
-                        <i class="fas fa-clock"></i>
-                        <span>Fast Turnaround</span>
+
+                    <div class="hero-location-line" data-aos="fade-up" data-aos-delay="380" aria-label="Service area">
+                        <span><i class="fas fa-location-dot"></i> Bucks County</span>
+                        <span><i class="fas fa-location-dot"></i> Montgomery County</span>
+                        <span><i class="fas fa-location-dot"></i> Lehigh Valley</span>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div class="scroll-indicator">
+        <div class="scroll-indicator" aria-hidden="true">
             <div class="mouse"></div>
         </div>
     </section>
 
-    <!-- About Section -->
+<!-- About Section -->
     <section class="about-section" id="about">
         <div class="section-bg-slideshow">
             <div class="bg-slide active" style="background-image: url('images/about-lexus.jpg');"></div>
